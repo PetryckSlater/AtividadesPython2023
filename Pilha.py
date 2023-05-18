@@ -1,20 +1,29 @@
-class testpilha:
-    def __init__(self):
-        self.pilha = [3,4]
-        
-    def entrada(self, v1):
-        self.pilha.append(v1)
-        return self.pilha
-    def remover(self):
-        self.pilha.pop() #Remove o ultimo fila remove o primeiro e o primeiro é sempre marcado na memoria como 0
-        return self.pilha
-    
-    def imprimir(self):
-        print(f'{self.pilha}')
+from No import No 
 
-t = testpilha()
-t.entrada(2)
-t.entrada(5)
-t.entrada(6)
-t.remover()
-print(t.imprimir())
+class Pilha:
+    def __init__(self):
+        self.topo = None
+        
+    def is_empty(self):
+        return self.topo is None
+    
+    def push(self, valor):
+        no = No(valor)
+        no.prox = self.topo
+        self.topo = no
+    
+    def pop(self):
+        assert self.topo != None, "A pilha ta vazia!"
+        elemento_remover = self.topo
+        self.topo = self.topo.prox
+    
+pilha = Pilha()
+pilha.push(50)
+pilha.push(20)
+pilha.push(30)
+pilha.push(10)
+print(pilha.topo)
+pilha.pop()
+print(pilha.topo)
+
+
